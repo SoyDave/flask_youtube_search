@@ -1,0 +1,7 @@
+profe yo trabaje sobre un entorno virtual con pipenv para que me trabajara el flask, 
+por lo cual yo lo hago de la siguiente manera:
+
+1. Instalo flask en mi env con: pipenv install flask (solo la primera vez)
+2. Monto el entorno virtual con: pipenv shell
+3. Reconfirmo el python en el entorno env con: pipenv install python-dotenv (solo la primera vez)
+3. Ya pongo a camellar el flask con: flask run

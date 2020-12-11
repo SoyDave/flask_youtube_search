@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Api Flask YouTube</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      .main{
+        font-family: 'Montserrat', sans-serif;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Styles CSS -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+  </head>
+  <body>
+
+<main class="main" role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">YouTube</h1>
+      <p class="lead text-muted">¡Api que muestra los principales resultados de busqueda en Youtube!</p>
+      <form method="POST">
+      <div class="input-group mb-3">
+        <input type="text" name="query" class="form-control">
+      </div>
+      <p>
+        <button type="submit" name="submit" value="search" class="btn btn-outline-danger">Buscar</button>
+        <button type="submit" name="submit" value="lucky" class="btn btn-outline-warning">Azar</button>
+      </p>
+      </form>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for video in videos %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ video.thumbnail }}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
+            <div class="card-body">
+              <p class="card-text">{{ video.title }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" href="{{ video.url }}" target="_blank" class="btn btn-outline-success">Mirar</a>
+                </div>
+                <small class="text-muted">{{ video.duration }} minutos</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}        
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer font-small">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright Juan David Ortiz Correa</div>
+  </footer>
+</main>
+</body>
+</html>
